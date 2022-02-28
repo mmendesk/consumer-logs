@@ -1,0 +1,36 @@
+version: '3'
+services:
+  mongo:
+    hostname: mongodb
+    container_name: mongodb
+    image: mongo:latest
+    restart: always
+    ports:
+      - "47017:27017"
+    volumes:
+      - consumer-mongo-data:/data/db
+      - ./mongo-setup:/docker-entrypoint-initdb.d/
+    command: [ "--replSet", "rs0", "--bind_ip_all" ]
+
+  consumer-logs-melhorenvio:
+    container_name: consumer-logs-melhorenvio
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      - .:/app
+    env_file:
+      - ./.env
+    ports:
+      - 3000:3000
+      - 3334:3334
+      - 9229:9229 #debug port
+    networks:
+      - consumer_network
+
+volumes:
+  consumer-mongo-data:
+    driver: local
+
+networks:
+  consumer_network:
