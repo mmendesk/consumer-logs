@@ -1,14 +1,18 @@
 import * as request from 'supertest';
-import { AppModule } from './../src/app.module';
 import { INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
+import { RouteModule } from 'src/domain/routesLogs/route.module';
+import { RequestModule } from 'src/domain/requestsLogs/request.module';
+import { ServiceModule } from 'src/domain/servicesLogs/service.module';
+import { LatencieModule } from 'src/domain/LatenciesLogs/latencie.module';
+import { ResponseModule } from 'src/domain/responsesLogs/response.module';
 
 describe('LatencieController', () => {
   let latencie: INestApplication;
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [AppModule],
+      imports: [LatencieModule],
     }).compile();
 
     latencie = moduleFixture.createNestApplication();
@@ -32,7 +36,7 @@ describe('RequestController', () => {
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [AppModule],
+      imports: [RequestModule],
     }).compile();
 
     requests = moduleFixture.createNestApplication();
@@ -63,7 +67,7 @@ describe('ResponseController', () => {
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [AppModule],
+      imports: [ResponseModule],
     }).compile();
 
     responses = moduleFixture.createNestApplication();
@@ -95,7 +99,7 @@ describe('RouteController', () => {
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [AppModule],
+      imports: [RouteModule],
     }).compile();
 
     route = moduleFixture.createNestApplication();
@@ -121,12 +125,12 @@ describe('RouteController', () => {
   });
 });
 
-describe('RouteController', () => {
+describe('ServiceController', () => {
   let service: INestApplication;
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [AppModule],
+      imports: [ServiceModule],
     }).compile();
 
     service = moduleFixture.createNestApplication();
