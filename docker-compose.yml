@@ -6,14 +6,14 @@ services:
     image: mongo:latest
     restart: always
     ports:
-      - "47017:27017"
+      - "37017:27017"
     volumes:
       - consumer-mongo-data:/data/db
       - ./mongo-setup:/docker-entrypoint-initdb.d/
     command: [ "--replSet", "rs0", "--bind_ip_all" ]
 
-  consumer-logs-melhorenvio:
-    container_name: consumer-logs-melhorenvio
+  consumer-logs-me:
+    container_name: consumer-logs-me
     build:
       context: .
       dockerfile: ./docker/Dockerfile
