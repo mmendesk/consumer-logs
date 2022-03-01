@@ -26,7 +26,7 @@ export class ResponseService {
     try {
       responses = await this.responseRepository.createResponse(responseData);
     } catch (error) {
-      utils.makeException(['erro ao criar latencia'], 400);
+      utils.makeException(['erro ao criar Response'], 400);
     }
 
     return responses;

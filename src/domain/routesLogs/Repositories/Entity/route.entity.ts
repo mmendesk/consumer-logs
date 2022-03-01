@@ -23,9 +23,6 @@ export class Route {
   @Prop(Number)
   regex_priority: number;
 
-  @Prop(Object)
-  service: { id: string };
-
   @Prop(Boolean)
   strip_path: boolean;
 
