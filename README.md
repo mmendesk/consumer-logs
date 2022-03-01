@@ -28,10 +28,41 @@
 
 ## Installation
 
+Installing the libraries that were used in the project.
 ```bash
 $ yarn install
 ```
 
+
+## Installation (ENV)
+
+Create an .env file and copy the data that consists of the .env.example.
+
+## User ubuntu (Docker)
+
+For ubuntu users, I advise using the make of the makefile to upload the application's docker.
+```bash
+$ make up
+
+or
+
+$ make logs
+
+or
+
+$ make up-and-log
+```
+
+## User windows (Docker)
+
+Now, if you are a windows user, the steps you should follow are:
+```bash
+$ docker ps (Check if there is any docker standing)
+
+$ docker-compose down (If you have any docker on the machine that might conflict with the ports)
+
+$ docker-compose up -d (run docker)
+```
 ## Running the app
 
 ```bash
@@ -41,8 +72,6 @@ $ yarn start
 # watch mode
 $ yarn start:dev
 
-# production mode
-$ yarn start:prod
 ```
 
 ## Test
