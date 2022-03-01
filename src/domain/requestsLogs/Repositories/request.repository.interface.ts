@@ -1,8 +1,8 @@
 import { Types } from 'mongoose';
-import { IRequestDataToCreate } from '../request.interface';
+import { IMongoResponseRequest, IRequestDataToCreate } from '../request.interface';
 
 export default interface IRequestRepository {
-  findAllRequestMongo(): Promise<IRequestRepository[]>;
+  findAllRequestMongo(): Promise<IMongoResponseRequest[]>;
   createRequest(
     requestData: IRequestDataToCreate,
   ): Promise<IRequestDataToCreate>;

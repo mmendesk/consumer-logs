@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Req, Request } from '@nestjs/common';
-import { RequestService } from 'src/domain/requestsLogs/request.service';
+import { ResponseService } from 'src/domain/responsesLogs/response.service';
 
 @Controller('response')
 export class ResponseController {

@@ -1,5 +1,5 @@
-import { Inject, Injectable } from '@nestjs/common';
 import { utils } from 'src/utils/utils';
+import { Injectable, Optional } from '@nestjs/common';
 import ILatenciesRepository from './Repositories/latencie.repository.interface';
 import {
   IMongoResponseLatencie,
@@ -9,7 +9,7 @@ import {
 @Injectable()
 export class LatencieService {
   constructor(
-    @Inject('LATENCIE_REPOSITORY')
+    @Optional()
     private latencieRepository: ILatenciesRepository,
   ) {}
 

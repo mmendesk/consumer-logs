@@ -1,12 +1,12 @@
-import { Inject, Injectable } from '@nestjs/common';
 import { utils } from 'src/utils/utils';
+import { Injectable, Optional } from '@nestjs/common';
 import IRouteRepository from './Repositories/route.repository.interface';
 import { IMongoResponseRoute, IRouteDataToCreate } from './route.interface';
 
 @Injectable()
 export class RouteService {
   constructor(
-    @Inject('ROUTE_REPOSITORY')
+    @Optional()
     private routeRepository: IRouteRepository,
   ) {}
 
@@ -17,7 +17,7 @@ export class RouteService {
   async findAll(): Promise<IMongoResponseRoute[]> {
     const routes = await this.routeRepository.findAllRouteMongo();
     if (routes[0]._id) {
-      return utils.makeException(['error interno ao buscar usuário'], 500);
+      return utils.makeException(['error interno ao buscar route'], 500);
     }
     return routes;
   }

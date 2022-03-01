@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 
 export type LatenciesDocument = Latencie & Document;
 
-@Schema()
+@Schema({ timestamps: true })
 export class Latencie {
   @Prop(Number)
   proxy: number;

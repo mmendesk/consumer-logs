@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable, Optional } from '@nestjs/common';
 import { utils } from 'src/utils/utils';
 import IRequestRepository from './Repositories/request.repository.interface';
 import {
@@ -9,7 +9,7 @@ import {
 @Injectable()
 export class RequestService {
   constructor(
-    @Inject('REQUEST_REPOSITORY')
+    @Optional()
     private requestRepository: IRequestRepository,
   ) {}
 

@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 
 export type RequestDocument = Request & Document;
 
-@Schema()
+@Schema({ timestamps: true })
 export class Request {
   @Prop(String)
   method: string;

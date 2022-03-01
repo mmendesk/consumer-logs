@@ -1,13 +1,19 @@
 import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
 import { LatencieService } from './latencie.service';
-import { LatencieProviders } from './latencie.providers';
-import { DatabaseModule } from '../../database/database.module';
 import { LatencieController } from 'src/controllers/latencie.controller';
+import {
+  Latencie,
+  LatencieSchema,
+} from './Repositories/Entity/latencies.entity';
 
 @Module({
-  imports: [DatabaseModule],
+  imports: [
+    MongooseModule.forFeature([{ name: 'Latencie', schema: LatencieSchema }]),
+    Latencie,
+  ],
   controllers: [LatencieController],
-  providers: [LatencieService, ...LatencieProviders],
+  providers: [LatencieService],
   exports: [],
 })
 export class LatencieModule {}

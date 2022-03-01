@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 
 export type ServiceDocument = Service & Document;
 
-@Schema()
+@Schema({ timestamps: true })
 export class Service {
   @Prop(String)
   host: string;

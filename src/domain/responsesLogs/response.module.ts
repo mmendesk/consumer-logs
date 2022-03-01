@@ -1,13 +1,19 @@
 import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
 import { ResponseService } from './response.service';
-import { ResponseProviders } from './response.providers';
-import { DatabaseModule } from '../../database/database.module';
 import { ResponseController } from 'src/controllers/response.controller';
+import {
+  Response,
+  ResponseSchema,
+} from './Repositories/Entity/response.entity';
 
 @Module({
-  imports: [DatabaseModule],
+  imports: [
+    MongooseModule.forFeature([{ name: 'Response', schema: ResponseSchema }]),
+    Response,
+  ],
   controllers: [ResponseController],
-  providers: [ResponseService, ...ResponseProviders],
+  providers: [ResponseService],
   exports: [],
 })
-export class RequestModule {}
+export class ResponseModule {}

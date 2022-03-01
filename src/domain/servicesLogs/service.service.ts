@@ -1,5 +1,5 @@
 import { utils } from 'src/utils/utils';
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable, Optional } from '@nestjs/common';
 import IServiceRepository from './Repositories/service.repository.interface';
 import {
   IMongoResponseService,
@@ -9,7 +9,7 @@ import {
 @Injectable()
 export class ServiceService {
   constructor(
-    @Inject('SERVICE_REPOSITORY')
+    @Optional()
     private serviceRepository: IServiceRepository,
   ) {}
 

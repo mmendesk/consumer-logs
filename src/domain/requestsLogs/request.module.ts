@@ -1,13 +1,16 @@
 import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
 import { RequestService } from './request.service';
-import { RequestProviders } from './request.providers';
-import { DatabaseModule } from '../../database/database.module';
 import { RequestController } from 'src/controllers/request.controller';
+import { Request, RequestSchema } from './Repositories/Entity/request.entity';
 
 @Module({
-  imports: [DatabaseModule],
+  imports: [
+    MongooseModule.forFeature([{ name: 'Request', schema: RequestSchema }]),
+    Request,
+  ],
   controllers: [RequestController],
-  providers: [RequestService, ...RequestProviders],
+  providers: [RequestService],
   exports: [],
 })
 export class RequestModule {}

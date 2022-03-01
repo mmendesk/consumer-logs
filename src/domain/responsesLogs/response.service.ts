@@ -1,12 +1,12 @@
-import { Inject, Injectable } from '@nestjs/common';
 import { utils } from 'src/utils/utils';
+import { Injectable, Optional } from '@nestjs/common';
 import IResponseRepository from './Repositories/response.repository.interface';
 import { IMongoResponse, IResponseDataToCreate } from './response.interface';
 
 @Injectable()
 export class ResponseService {
   constructor(
-    @Inject('RESPONSE_REPOSITORY')
+    @Optional()
     private responseRepository: IResponseRepository,
   ) {}
 

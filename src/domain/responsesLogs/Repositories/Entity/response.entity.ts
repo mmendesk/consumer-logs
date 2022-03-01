@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 
 export type ResponseDocument = Response & Document;
 
-@Schema()
+@Schema({ timestamps: true })
 export class Response {
   @Prop(Number)
   status: number;
