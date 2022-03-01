@@ -8,6 +8,9 @@ import {
 import { utils } from '../../../utils/utils';
 import IResponseRepository from './response.repository.interface';
 
+const config = require('../../../../mock/cosumer-logs.json');
+const fs = require('fs');
+
 @Injectable()
 export class ResponseRepository implements IResponseRepository {
   constructor(
@@ -15,14 +18,32 @@ export class ResponseRepository implements IResponseRepository {
     private responseModel: Model<ResponseDocument>,
   ) {}
 
+  // TODO:
+  // Method that returns all response data registered in the database
   async findAllResponseMongo(): Promise<IMongoResponse[]> {
     return utils.convertArrayDocumentMongoose(await this.responseModel.find());
   }
+
+  // TODO:
+  // Method of creating the responses based on the data that is found in the logs mock
   async createResponse(
     responseData: IResponseDataToCreate,
   ): Promise<IResponseDataToCreate> {
-    return (await this.responseModel.create(responseData)).toJSON();
+    try {
+      const jsonString = fs.readFileSync(config);
+      const consumer = JSON.parse(jsonString);
+      console.log(consumer.response);
+      if (consumer.length > 0) {
+        return (await this.responseModel.create(responseData)).toJSON();
+      }
+    } catch (err) {
+      console.log(err);
+      return;
+    }
   }
+
+  // TODO:
+  // Method of updating response data, passing in the body exactly the data that is required
   async updateResponse(
     responseData: IResponseDataToCreate,
     responseId: Types.ObjectId,

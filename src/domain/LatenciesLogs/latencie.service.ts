@@ -24,6 +24,10 @@ export class LatencieService {
     }
     return latencies;
   }
+
+  //TODO:
+  //I left the repository banking the logic to read and register and left
+  //the service isolated only for when it is called on the endpoint
   async createLatencie(latencieData: ILatencieDataToCreate): Promise<any[]> {
     let latencies;
     try {

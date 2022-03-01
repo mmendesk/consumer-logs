@@ -24,7 +24,10 @@ export class ServiceService {
     }
     return services;
   }
-
+  
+  //TODO:
+  //I left the repository banking the logic to read and register and left
+  //the service isolated only for when it is called on the endpoint
   async createService(serviceData: IServiceDataToCreate): Promise<any[]> {
     let services;
     try {
